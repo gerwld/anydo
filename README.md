@@ -1,12 +1,20 @@
 # anydo-clone
-
-## Available Scripts
-
-To run the project, In the project directory run:
-
-### `yarn && yarn run dev`
+ReactJS & Redux Anydo To-do list. Feel free to use it, change, or contribute.
+### Preview:
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/47056812/227779952-b75f21b7-c1d0-4015-bd74-c1d20ad59c22.png">
 
 
-## Screencast:
 
-[<img width="475" alt="pv_todo" src="https://user-images.githubusercontent.com/47056812/208244332-ea8b91ac-e671-457e-bfe5-07b7a08ae57b.png">](https://youtu.be/a2wkGlQXIi8)
+Project link - https://gerwld.github.io/anydo-clone/
+
+### To run the project:
+``` 
+$ pnpm i
+$ pnpm run dev
+```
+
+### Works currently:
+1) CRUD oparations
+2) localStorage cache (tasks, tags)
+3) Axios + redux thunk logic for fetching, storage data
+
