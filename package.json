@@ -1,8 +1,8 @@
 {
-  "name": "todo-list",
+  "name": "anydo-clone",
   "private": false,
   "version": "1.0.0",
-  "homepage": "https://gerwld.github.io/todo-list",
+  "homepage": "https://gerwld.github.io/anydo-clone/",
   "author": "gerwld",
   "proxy": "http://146.190.226.226:8000/",
   "scripts": {
