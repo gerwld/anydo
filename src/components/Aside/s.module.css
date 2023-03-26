@@ -98,7 +98,8 @@ li.current {
  display: block;
  text-align: center;
  letter-spacing: 0.03em;
- color: #c2c7cf;
+ font-weight: 500;
+ color: #808ca1;
 }
 
 .active_sort {

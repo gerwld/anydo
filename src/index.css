@@ -33,20 +33,22 @@ body {
   min-width: 1100px;
   min-height: 500px;
   overflow: hidden;
+  animation: appear 0.3s ease-in-out both 0.3s;
 }
 
-/* *,
-body {
-  cursor: url(https://cdn.custom-cursor.com/db/4706/32/arrow2686.png) , default!important;
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-button, 
-input, 
-textarea,
-label, 
-a {
-  cursor: url(https://cdn.custom-cursor.com/db/4705/32/arrow2686.png) , pointer!important;
-} */
+
 
 h1 {
   font-size: 2.6rem;

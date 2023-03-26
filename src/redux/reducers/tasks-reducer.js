@@ -12,6 +12,8 @@ const SET_CURRENT = "todo-list/tasks-reducer/SET_CURRENT";
 const SET_CURRENT_TAGS = "todo-list/tasks-reducer/SET_CURRENT_TAGS";
 const SET_CURRENT_SORT = "todo-list/tasks-reducer/SET_CURRENT_SORT";
 const ADD_TASK = "todo-list/tasks-reducer/ADD_TASK";
+const EDIT_TASK = "todo-list/tasks-reducer/EDIT_TASK";
+const DELETE_TASK = "todo-list/tasks-reducer/DELETE_TASK";
 
 
 export const setError = (body) => ({ type: SET_ERROR, body });
@@ -22,14 +24,13 @@ export const setCreatemode = (isCreateMode) => ({ type: SET_CREATEMODE, isCreate
 export const setCurrent = (currentElement) => ({ type: SET_CURRENT, currentElement });
 export const setCurrentTags = (currentTags) => ({ type: SET_CURRENT_TAGS, currentTags });
 export const setCurrentSort = (currentTag) => ({ type: SET_CURRENT_SORT, currentTag });
-export const addTask = (taskObj) => ({ type: ADD_TASK, taskObj });
 export const setAllTasks = (payload) => ({ type: SET_TASKS, payload });
 export const onTaskLogout = () => ({ type: ON_TASKS_LOGOUT });
 export const onSubmitPending = (isPending) => ({ type: SET_SUB_PENDING, isPending });
 
 
 const init = {
- isInit: false,
+ isInit: true,
  isSubmitPending: false,
  isEditMode: false,
  isCreateMode: false,
@@ -39,21 +40,7 @@ const init = {
  currentError: undefined,
  currentTag: undefined,
  sortedTasks: null,
- tasks: [
-  // {
-  //  id: "59h9bdf9n434",
-  //  title: "Task Title",
-  //  desc: "Task Description",
-  //  status: 0,
-  //  dateCreated: "1668380951687.2",
-  //  lastEdit: "1668380951687.2",
-  //  tags: ["some lable", "work"],
-  //  subtasks: [
-  //   { id: "49bkfdke4", title: "Subtask 1", isChecked: false },
-  //   { id: "49bkfdkfe4", title: "Subtask 2", isChecked: false },
-  //  ],
-  // },
- ],
+ tasks: [],
 };
 
 const tasksReducer = (state = init, action) => {
@@ -130,17 +117,29 @@ const tasksReducer = (state = init, action) => {
       currentError: null,
       tasks: []
      };
+  case EDIT_TASK:
+    return {
+      ...state,
+      tasks: [...[...state.tasks].filter(e => e.id !== action.payload.id), action.payload]
+    }
+  case DELETE_TASK:
+    return {
+      ...state,
+      tasks: [...state.tasks].filter(e => e.id !== action.payload)
+    }
   default:
    return state;
  }
 };
+
+//server
 
 export const setTaskTC = (obj) => {
  return async (dispatch) => {
   await dispatch(onSubmitPending(true));
   await TasksService.createTask({ ...obj, dateCreated: Date.now() })
    .then(({ data }) => {
-    dispatch(addTask(data));
+    dispatch({ type: ADD_TASK, data });
    })
    .catch((error) => {
     dispatch(setError(error.message));
@@ -187,5 +186,41 @@ export const deleteTaskTC = (id) => {
    });
  };
 };
+
+// locally (current)
+const PENDING_TIMEOUT = 400;
+
+export const locallySetTaskTC = (obj) => {
+  return async (dispatch) => {
+   await dispatch(onSubmitPending(true));
+   //imit. fetching delay
+   setTimeout(async () => {
+    await dispatch({ type: ADD_TASK, taskObj: { ...obj, id: Date.now() } });
+    await dispatch(onSubmitPending(false));
+  }, PENDING_TIMEOUT)
+  };
+ };
+
+ export const locallyEditTaskTC = (newObj) => {
+  return async (dispatch) => {
+   dispatch(onSubmitPending(true));
+   //imit. fetching delay
+   setTimeout(async () => {
+    await dispatch({type: EDIT_TASK, payload: newObj})
+   await dispatch(onSubmitPending(false));
+   await dispatch(setEditmode(false));
+  }, PENDING_TIMEOUT)
+  };
+ };
+
+ export const locallyDeleteTaskTC = (id) => {
+  return (dispatch) => {
+    setTimeout(async () => {
+    await dispatch({type: DELETE_TASK, payload: id});
+    await dispatch(setDeletemode(false, null));
+    }, PENDING_TIMEOUT);
+ };
+};
+ 
 
 export default tasksReducer;

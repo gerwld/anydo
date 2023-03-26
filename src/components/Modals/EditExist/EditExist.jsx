@@ -1,13 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { editTaskTC } from "../../../redux/reducers/tasks-reducer";
+import { locallyEditTaskTC } from "../../../redux/reducers/tasks-reducer";
 import TaskForm from "../../TaskForm/TaskForm";
 
 const EditExist = ({ isEditMode, toggleEdit, currentObj }) => {
  const disp = useDispatch();
 
  const onSubmitCB = (obj) => {
-  disp(editTaskTC(obj));
+  //no-server - disp(editTaskTC(obj));
+  disp(locallyEditTaskTC(obj));
  };
 
  return (
