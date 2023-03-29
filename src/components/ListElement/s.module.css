@@ -1,61 +1,96 @@
 .content {
- position: relative;
- padding: 9px 10px;
- margin-bottom: 9px;
- background-color: rgba(255, 255, 255, 0.158);
- border: 1px solid rgba(255, 255, 255, 0.2);
- box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  position: relative;
+  padding: 9px 10px;
+  margin-bottom: 9px;
+  background-color: rgba(255, 255, 255, 0.158);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .title {
- margin: 0 0 6px;
- padding-right: 90px;
- font-size: 1.4rem;
- line-height: 135%;
+  margin: 0 0 6px;
+  padding-right: 90px;
+  font-size: 1.4rem;
+  line-height: 135%;
 }
 
 .desc {
- margin: 5px 0 10px;
- font-size: 1.05rem;
- line-height: 140%;
+  margin: 5px 0 10px;
+  font-size: 1.05rem;
+  line-height: 140%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .actions {
- top: 0.8em;
- right: 8px;
- position: absolute;
+  top: 0.8em;
+  right: 8px;
+  position: absolute;
 }
 
 .btn_edit,
 .btn_del {
- padding: 5px 10px;
- font-size: 0.9rem;
+  padding: 5px 10px;
+  font-size: 0.9rem;
 }
 
 .btn_del {
- border-left: 1px solid var(--main-color)
+  border-left: 1px solid var(--main-color)
 }
 
 .labels span {
- display: inline-block;
- padding: 5px 8px 4px;
- margin: 0 5px 4px 0;
+  display: inline-block;
+  padding: 5px 8px 4px;
+  margin: 0 5px 4px 0;
 
- line-height: 0.8rem;
- font-size: 0.8rem;
- font-weight: 500;
- text-transform: uppercase;
+  line-height: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
 
- background-color: rgb(100, 87, 87);
- user-select: none;
+  background-color: rgb(100, 87, 87);
+  user-select: none;
 
 }
 
 .sub_task {
- margin-right: 7px;
- text-transform: capitalize;
+  margin-right: 7px;
+  text-transform: capitalize;
 }
 
 .sub_task:nth-last-child(1) {
- margin-right: 0;
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .title {
+    font-size: 1.5em;
+  }
+
+  .desc {
+    font-size: 0.97rem;
+    line-height: 140%;
+  }
+
+  .content {
+    min-height: 100px;
+    padding: 7px 8px;
+  }
+
+  .actions {
+    top: 0.5em;
+    right: 7px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .content:nth-last-child(1) {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .title {
+    font-size: 1.2rem;
+  }
 }

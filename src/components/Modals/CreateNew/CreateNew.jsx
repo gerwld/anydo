@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { locallySetTaskTC } from "../../../redux/reducers/tasks-reducer";
-import TaskForm from "../../TaskForm/TaskForm";
+import { locallySetTaskTC } from "@/redux/reducers/tasks-reducer";
+import { TaskForm } from "@/components/";
+import {setBodyFixed} from "@/tools";
 
 const CreateNew = ({ isCreateMode, toggleNew }) => {
  const disp = useDispatch();
 
  const onSubmitCB = (obj) => {
-  //no-server - disp(setTaskTC(obj));
   disp(locallySetTaskTC(obj));
+  setBodyFixed();
  };
 
  return (

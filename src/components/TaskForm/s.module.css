@@ -2,6 +2,7 @@
  position: relative;
  display: flex;
  justify-content: space-between;
+ flex-wrap: wrap;
  font-size: 1.1em;
  min-height: 446px;
 }
@@ -160,4 +161,47 @@ input[type="radio"]:focus {
  background-color: rgba(255, 255, 255, 0.158);
  border-color: #8e9399;
  z-index: 100;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .buttons {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    margin-top: 15px;
+  }
+
+  .group_1 {
+    margin-right: 6%;
+  }
+
+  .group_2 {
+margin-right: 0;
+  }
+
+  .group_1, 
+  .group_2 {
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width: 545px) {
+  .form {
+    display: block;
+  }
+
+  .group_1 {
+    margin: 0;
+  }
+
+  .group_2 {
+    padding: 15px 0 100px;
+  }
+
+  .buttons {
+  bottom: 10px;
+    right: 0px;
+
+  }
 }

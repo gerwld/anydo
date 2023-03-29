@@ -10,7 +10,7 @@ const Aside = ({ tags, toggleNew, onLogout, isInit, currentTag }) => {
    <button onClick={toggleNew} className={s.btn_create}>Create New Task</button>
 
    {/* /--- NAVIGATION  ---/ */}
-   <nav className={s.tags_nav}>
+   <nav className={`${s.tags_nav} ${!tags?.length ? s.hide_mob : ''}`}>
     <h2>Tags:</h2>
     <ul>
      <li className={!currentTag ? s.current : ''}><NavLink to='/'>All</NavLink></li>

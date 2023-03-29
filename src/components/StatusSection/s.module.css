@@ -1,40 +1,78 @@
-
 .section {
- flex: 1;
- margin: 10px 0 0 10px;
- border: 1px solid var(--sec-color);
- border-bottom: 0;
- overflow: hidden;
+  flex: 1;
+  margin: 10px 0 0 10px;
+  border: 1px solid var(--sec-color);
+  border-bottom: 0;
+  overflow: hidden;
 }
 
 .section:nth-last-child(1) {
- margin-right: 10px;
+  margin-right: 10px;
 }
 
 .title {
- display: block;
- width: 100%;
- margin: 0;
- padding: 0.3em 0;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.3em 0;
 
- line-height: 100%;
- font-size: 1.7em;
- text-align: center;
- text-transform: capitalize;
- color: #fff;
- background-color: #696d74;
- user-select: none;
+  line-height: 100%;
+  font-size: 1.7em;
+  text-align: center;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #696d74;
+  user-select: none;
 }
 
 .content {
- display: block;
- padding: 8px;
- height: calc(100% - 43px);
- background-color: rgba(255, 255, 255, 0.084);
- box-sizing: border-box;
- overflow: scroll;
+  display: block;
+  padding: 8px;
+  height: calc(100% - 43px);
+  background-color: rgba(255, 255, 255, 0.084);
+  box-sizing: border-box;
+  overflow: scroll;
 }
 
 .empty_sect {
- text-align: center;
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+  .section:nth-last-child(1),
+  .section {
+    margin: 7px 7px 0;
+  }
+
+  .content {
+    background-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .section {
+    margin: 7px 7px 0;
+    border: 1px solid var(--sec-color);
+  }
+
+  .content {
+    min-height: 100px;
+  }
+
+  .title {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .section:nth-last-child(1),
+  .section {
+    margin: 3px 3px 0;
+  }
 }

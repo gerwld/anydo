@@ -1,15 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { locallyDeleteTaskTC } from "../../../redux/reducers/tasks-reducer";
+import { locallyDeleteTaskTC } from "@/redux/reducers/tasks-reducer";
+import {setBodyFixed} from "@/tools";
 
 const SubmitDelete = ({ isDeleteMode, toggleDelete, pendingDeleteID}) => {
  const disp = useDispatch();
 
  const onSubmitCB = () => {
   if(pendingDeleteID || pendingDeleteID === 0) {
-    //no-server - disp(deleteTaskTC(pendingDeleteID));
     disp(locallyDeleteTaskTC(pendingDeleteID));
   }
+  setBodyFixed();
 }
 
  return (

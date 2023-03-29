@@ -1,4 +1,5 @@
-import TasksService from "../../services/TasksService";
+import TasksService from "@/services/TasksService";
+import {setBodyFixed} from "@/tools";
 
 const SET_ERROR = "todo-list/tasks-reducer/SET_ERROR";
 const SET_SUB_PENDING = "todo-list/tasks-reducer/SET_SUB_PENDING";
@@ -18,16 +19,12 @@ const DELETE_TASK = "todo-list/tasks-reducer/DELETE_TASK";
 
 export const setError = (body) => ({ type: SET_ERROR, body });
 export const setInitTasks = (isInit) => ({ type: SET_INIT_TASKS, isInit });
-export const setEditmode = (isEditMode, id) => ({ type: SET_EDITMODE, isEditMode, id });
-export const setDeletemode = (isDeleteMode, id) => ({ type: SET_DELMODE, isDeleteMode, id });
-export const setCreatemode = (isCreateMode) => ({ type: SET_CREATEMODE, isCreateMode });
 export const setCurrent = (currentElement) => ({ type: SET_CURRENT, currentElement });
 export const setCurrentTags = (currentTags) => ({ type: SET_CURRENT_TAGS, currentTags });
 export const setCurrentSort = (currentTag) => ({ type: SET_CURRENT_SORT, currentTag });
 export const setAllTasks = (payload) => ({ type: SET_TASKS, payload });
 export const onTaskLogout = () => ({ type: ON_TASKS_LOGOUT });
 export const onSubmitPending = (isPending) => ({ type: SET_SUB_PENDING, isPending });
-
 
 const init = {
  isInit: true,
@@ -206,10 +203,10 @@ export const locallySetTaskTC = (obj) => {
    dispatch(onSubmitPending(true));
    //imit. fetching delay
    setTimeout(async () => {
-    await dispatch({type: EDIT_TASK, payload: newObj})
-   await dispatch(onSubmitPending(false));
-   await dispatch(setEditmode(false));
-  }, PENDING_TIMEOUT)
+    await dispatch({ type: EDIT_TASK, payload: newObj });
+    await dispatch(onSubmitPending(false));
+    await dispatch(setEditmode(false));
+   }, PENDING_TIMEOUT);
   };
  };
 
@@ -221,6 +218,31 @@ export const locallySetTaskTC = (obj) => {
     }, PENDING_TIMEOUT);
  };
 };
+
+//other 
+
+export const setCreatemode =(isCreateMode) => {
+  return (dispatch) => {
+    setBodyFixed(isCreateMode);
+    dispatch({ type: SET_CREATEMODE, isCreateMode });
+  } 
+}
+
+export const setEditmode =(isEditMode, id) => {
+  return (dispatch) => {
+    setBodyFixed(isEditMode);
+    dispatch({ type: SET_EDITMODE, isEditMode, id });
+  } 
+}
+
+export const setDeletemode =(isDeleteMode, id) => {
+  return (dispatch) => {
+    setBodyFixed(isDeleteMode);
+    dispatch({ type: SET_DELMODE, isDeleteMode, id });
+  } 
+}
+
+
  
 
 export default tasksReducer;
