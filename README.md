@@ -1,5 +1,5 @@
 # anydo-clone
-ReactJS & Redux Anydo To-do list. Feel free to use it, change, or contribute.
+ReactJS & Redux Anydo-like tasks managment tool. Feel free to use it, change, or contribute.
 ### Preview:
 
 <img width="900" alt="image" src="https://user-images.githubusercontent.com/47056812/228650681-de1b6cb0-48ce-4435-8055-f92a6dcaa724.png">
