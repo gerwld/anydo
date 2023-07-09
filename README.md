@@ -1,4 +1,4 @@
-# anydo-clone
+# Tasks managment tool
 ReactJS & Redux Anydo-like tasks managment tool. Feel free to use it, change, or contribute.
 ### Preview:
 
