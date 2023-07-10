@@ -4,23 +4,23 @@ import jsconfigPaths from "vite-jsconfig-paths";
 import path from "path";
 
 export default defineConfig({
- plugins: [jsconfigPaths(), react()],
- base: "/anydo-clone/",
- define: {
-  APP_VERSION: JSON.stringify(process.env.npm_package_version),
- },
- server: {
-  proxy: {
-   "/api": {
-    target: "http://146.190.226.226:8000/",
-    changeOrigin: true,
-    secure: false,
-   },
+  plugins: [jsconfigPaths(), react()],
+  base: "/anydo-tm/",
+  define: {
+    APP_VERSION: JSON.stringify(process.env.npm_package_version),
   },
- },
- resolve: {
-  alias: {
-   "@": path.resolve(__dirname, "./src"),
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://146.190.226.226:8000/",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
- },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 });
