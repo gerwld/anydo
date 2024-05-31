@@ -2,7 +2,7 @@
   "name": "anydo-tm",
   "private": false,
   "version": "1.0.0",
-  "homepage": "https://gerwld.github.io/anydo-tm/",
+  "homepage": "https://gerwld.github.io/anydo/",
   "author": "gerwld",
   "proxy": "http://146.190.226.226:8000/",
   "scripts": {
