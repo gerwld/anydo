@@ -5,7 +5,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [jsconfigPaths(), react()],
-  base: "/anydo-tm/",
+  base: "/anydo/",
   define: {
     APP_VERSION: JSON.stringify(process.env.npm_package_version),
   },
